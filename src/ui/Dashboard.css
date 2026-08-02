@@ -1,0 +1,335 @@
+:root {
+  --primary-blue: #00d4ff;
+  --dark-bg: #0a0e27;
+  --card-bg: rgba(15, 25, 55, 0.8);
+  --accent-cyan: #00ffff;
+  --accent-purple: #7c3aed;
+  --accent-orange: #ff6b35;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border-glow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0e27 0%, #1a2a4a 100%);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.dashboard-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--dark-bg);
+  overflow: hidden;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: linear-gradient(180deg, rgba(15, 25, 55, 0.95) 0%, rgba(10, 14, 39, 0.8) 100%);
+  border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+  box-shadow: var(--border-glow);
+  height: 80px;
+}
+
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.bmw-icon {
+  font-size: 28px;
+  margin-right: 10px;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px var(--primary-blue);
+}
+
+.brand-subtitle {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.header-stats {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 12px;
+  border-left: 2px solid rgba(0, 212, 255, 0.5);
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+
+.stat-value-mode {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4ade80;
+}
+
+.stat-value-safety {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fbbf24;
+}
+
+.stat-value-connected {
+  font-size: 13px;
+  font-weight: 600;
+  color: #34d399;
+}
+
+.header-time {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-left: 20px;
+  min-width: 70px;
+  text-align: right;
+}
+
+/* Main Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 15px;
+  flex: 1;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.left-section,
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+}
+
+.left-section::-webkit-scrollbar,
+.right-section::-webkit-scrollbar {
+  width: 4px;
+}
+
+.left-section::-webkit-scrollbar-track,
+.right-section::-webkit-scrollbar-track {
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.left-section::-webkit-scrollbar-thumb,
+.right-section::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.5);
+  border-radius: 2px;
+}
+
+/* Center Section */
+.center-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.speed-display {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.speedometer {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speedometer-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+}
+
+.speedometer-bg {
+  fill: none;
+  stroke: rgba(0, 212, 255, 0.1);
+  stroke-width: 2;
+}
+
+.speedometer-arc {
+  fill: none;
+  stroke: url(#speedGradient);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.speed-needle {
+  transform-origin: 100px 100px;
+  transition: transform 0.1s ease-out;
+}
+
+.speed-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.speed-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  line-height: 1;
+}
+
+.speed-unit {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 5px;
+}
+
+.speed-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  min-width: 150px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  font-size: 13px;
+}
+
+.mode-badge {
+  background: rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.car-view-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  flex: 1;
+  justify-content: center;
+}
+
+.car-outline {
+  font-size: 120px;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+}
+
+.road-markers {
+  display: flex;
+  gap: 20px;
+  opacity: 0.6;
+}
+
+.marker {
+  width: 40px;
+  height: 3px;
+  background: rgba(0, 212, 255, 0.5);
+  border-radius: 2px;
+}
+
+/* Bottom Section */
+.bottom-section {
+  height: 150px;
+  padding: 15px;
+  border-top: 2px solid rgba(0, 212, 255, 0.3);
+  box-shadow: var(--border-glow);
+  overflow-y: auto;
+}
+
+.bottom-section::-webkit-scrollbar {
+  height: 4px;
+}
+
+.bottom-section::-webkit-scrollbar-track {
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.bottom-section::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.5);
+  border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+  .dashboard-grid {
+    grid-template-columns: 0.8fr 1.5fr 0.8fr;
+  }
+}
+
+@media (max-width: 1000px) {
+  .header-stats {
+    gap: 10px;
+  }
+
+  .stat-item {
+    padding: 6px 8px;
+  }
+
+  .stat-label {
+    font-size: 8px;
+  }
+
+  .stat-value {
+    font-size: 11px;
+  }
+}

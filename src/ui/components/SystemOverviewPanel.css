@@ -1,0 +1,199 @@
+.system-overview-panel {
+  background: linear-gradient(135deg, rgba(15, 25, 55, 0.9) 0%, rgba(20, 30, 60, 0.8) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+  padding-bottom: 10px;
+}
+
+.panel-icon {
+  font-size: 24px;
+}
+
+.panel-header h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.overview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.overview-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.overview-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.5);
+  border-radius: 2px;
+}
+
+/* GPU Section */
+.gpu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gpu-title,
+.allocation-title,
+.routing-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a0a0a0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  display: grid;
+  grid-template-columns: 25px 1fr auto 30px;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.task-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  background: rgba(0, 212, 255, 0.2);
+  border-radius: 50%;
+  color: #00ffff;
+  font-weight: 700;
+}
+
+.task-name {
+  color: #a0a0a0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-priority {
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 9px;
+}
+
+.priority-high {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.priority-medium {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+}
+
+.priority-low {
+  background: rgba(52, 211, 153, 0.2);
+  color: #34d399;
+}
+
+.task-status {
+  font-weight: 600;
+  color: #34d399;
+}
+
+/* GPU Allocation */
+.gpu-allocation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.allocation-item {
+  display: grid;
+  grid-template-columns: 120px 1fr 40px;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+}
+
+.allocation-item span:first-child {
+  color: #a0a0a0;
+}
+
+.allocation-item span:last-child {
+  color: #00ffff;
+  font-weight: 600;
+  text-align: right;
+}
+
+.allocation-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.allocation-fill {
+  height: 100%;
+  border-radius: 2px;
+  box-shadow: 0 0 5px currentColor;
+}
+
+/* Resource Routing */
+.resource-routing {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.routing-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.routing-item span:first-child {
+  color: #a0a0a0;
+}
+
+.routing-value {
+  color: #00ffff;
+  font-weight: 700;
+}
